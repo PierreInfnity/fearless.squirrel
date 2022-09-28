@@ -31,7 +31,7 @@ function init()
     light1 = new Light("sun", 0xffffff, "0,0,340");
     scene.add(light1);
     isalive = true;
-    ennemy1 = new Ennemy("ennemy1" , new THREE.Vector2(70, 0), 0)
+    ennemy1 = new Ennemy("ennemy1" , new THREE.Vector2(-100, 0), 0)
     scene.add(ennemy1.graphic);
 }
 

@@ -86,6 +86,19 @@ function player_collision()
     if ( y > HEIGHT )
         player1.graphic.position.y -= y - HEIGHT;
 
+        if (isalive && player1.life > 0) {
+            if (
+                Math.abs(player1.graphic.position.x - ennemy1.graphic.position.x) <
+                    10 &&
+                Math.abs(player1.graphic.position.y - ennemy1.graphic.position.y) <
+                    10
+            ) {
+                player1.life -= 1;
+                console.log("An ennemy hurt you , you lost one hp , you have now : " , player1.life )
+                scene.remove(player1.graphic);
+            }
+        }
+
 }
 
 function player_falling()
@@ -120,7 +133,7 @@ function player_falling()
             && (y < mtileY) )
         {
            player1.life --;
-           console.log("You los one hp , you have " , player1.life )
+           console.log("You fall and lost one hp , you have now : " , player1.life )
            break;
         }
     }

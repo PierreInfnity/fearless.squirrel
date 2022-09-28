@@ -14,5 +14,13 @@ function update()
         player1.decelerate(moveDistance);
 
     player1.move();
+    if (isalive)
+    {
+        ennemy1.turnLeft(rotateAngle);
+        ennemy1.accelerate(moveDistance);
+        ennemy1.move();
+
+    }
     controls.update();
 }
+
