@@ -93,9 +93,21 @@ function player_collision()
                 Math.abs(player1.graphic.position.y - ennemy1.graphic.position.y) <
                     10
             ) {
-                player1.life -= 1;
-                console.log("An ennemy hurt you , you lost one hp , you have now : " , player1.life )
+                if (player1.life > 1 )
+                {
+                life = player1.life - 1;
                 scene.remove(player1.graphic);
+                player1 = new Player("player1", 0xffff00, new THREE.Vector2(50, 0), 0);
+                player1.life = life;
+                scene.add(player1.graphic);
+                console.log("You got hut by an ennemy and lost one hp , you have now : " , player1.life )
+                }
+                else
+                {
+                    player1.dead();
+                    scene.remove(player1.graphic);
+
+                }
             }
         }
 
@@ -132,7 +144,11 @@ function player_falling()
             && (y > tileY) 
             && (y < mtileY) )
         {
-           player1.life --;
+           life = player1.life - 1;
+           scene.remove(player1.graphic);
+           player1 = new Player("player1", 0xffff00, new THREE.Vector2(50, 0), 0);
+           player1.life = life;
+           scene.add(player1.graphic);
            console.log("You fall and lost one hp , you have now : " , player1.life )
            break;
         }

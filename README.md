@@ -29,5 +29,5 @@ A video game with three.js
 - [X] : As a player, I want to see ennemy
 - [X] : As a player, I want to destroy ennemy when I shot them
 - [X] : As a ennemy, I want to move on one axe (BON MOI IL FAIT DES CERCLES PARCEQUE C'EST VACHEMENT PLUS BADASSE)
-- [ ] : As a player, I want to decrease my life when I am touch by an ennemy
+- [X] : As a player, I want to decrease my life when I am touch by an ennemy (ON MEURT QUAND ON TOMBE A 0 PAS A -1)
 - [X] : As a player, I want to decrease my life when I fall 
