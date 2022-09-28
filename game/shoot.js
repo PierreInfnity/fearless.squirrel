@@ -51,6 +51,23 @@ function bullet_collision()
             player1.bullets.splice(i, 1);
             i--;
         }
+
+        else if ( isalive == true &&
+            Math.abs(
+                player1.bullets[i].position.x - ennemy1.graphic.position.x
+            ) < 10 &&
+            Math.abs(
+                player1.bullets[i].position.y - ennemy1.graphic.position.y
+            ) < 10
+        ) {
+            scene.remove(player1.bullets[i]);
+            player1.bullets.splice(i, 1);
+            i--;
+            isalive = false;
+            console.log("You killed the ennemy")
+            scene.remove(ennemy1.graphic);
+        }
+
     }
 
 }
@@ -60,11 +77,12 @@ function player_collision()
     //collision between player and walls
     var x = player1.graphic.position.x + WIDTH / 2;
     var y = player1.graphic.position.y + HEIGHT / 2;
-
     if ( x > WIDTH )
         player1.graphic.position.x -= x - WIDTH;
     if ( y < 0 )
         player1.graphic.position.y -= y;
+    if ( x < 0 )
+        player1.graphic.position.x -= x;
     if ( y > HEIGHT )
         player1.graphic.position.y -= y - HEIGHT;
 
@@ -91,9 +109,19 @@ function player_falling()
         if ((x > tileX)
             && (x < mtileX)
             && (y > tileY) 
-            && (y < mtileY))
+            && (y < mtileY) && player1.life == 1)
         {
            player1.dead();
+           break;
+        }
+        else if ((x > tileX)
+            && (x < mtileX)
+            && (y > tileY) 
+            && (y < mtileY) )
+        {
+           player1.life --;
+           console.log("You los one hp , you have " , player1.life )
+           break;
         }
     }
 
